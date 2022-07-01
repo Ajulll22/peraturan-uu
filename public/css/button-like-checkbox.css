@@ -1,0 +1,51 @@
+.ck-button {
+    /* background-color: #e2e8f0; */
+    color: black;
+    overflow: auto;
+    float: left;
+}
+
+.ck-button:hover {
+}
+
+.ck-button label {
+    float: left;
+    width: 4em;
+    /* display: block;
+    position: relative;
+    overflow: hidden; */
+}
+
+.ck-button label span {
+    text-align: center;
+    padding: 3px 0px;
+    display: block;
+}
+
+.ck-button label input {
+    position: absolute;
+    display: none;
+    top: -20px;
+}
+
+.ck-button input:checked + span {
+    /* background-color: #0891b2; */
+    color: white;
+}
+
+.advertisement {
+    position: fixed;
+    bottom: 0;
+    padding: 50px 30px;
+    background: #433eff;
+    z-index: 1;
+    transition: all 1s;
+}
+/* .hide {
+    opacity: 0;
+    left: -100%;
+}
+.show {
+    opacity: 1;
+    left: 0;
+} */
