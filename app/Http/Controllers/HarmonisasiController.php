@@ -120,8 +120,8 @@ class HarmonisasiController extends Controller
 
     public function resultData()
     {
-        $url = 'http://localhost:5000/v1/harmonisasi/keyword';
-        $data = json_decode(file_get_contents($url))->values;
+        $url = 'http://localhost:8080/v1/harmonisasi/keyword';
+        $data = json_decode(file_get_contents($url))->value;
 
         return DataTables::of($data)
             ->addIndexColumn()
