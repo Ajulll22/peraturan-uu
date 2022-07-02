@@ -12,11 +12,7 @@
             </div>
 
             <div class="py-3 mt-3 border-t border-t-slate-400">
-                <form action="{{ route('archive-file.store') }}" method="POST" enctype="multipart/form-data">
-                    @csrf
-                    <input type="file" name="archive">
-                    <button type="submit">Upload</button>
-                </form>
+
             </div>
         </div> --}}
         <div class="w-full p-8 bg-white rounded-md shadow-lg">
