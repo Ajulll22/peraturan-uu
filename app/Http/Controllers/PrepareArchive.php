@@ -56,7 +56,7 @@ trait PrepareArchive
     {
         // APPLY PREPROCESSING FROM FLASK APPLICATION
         // DONT FORGET TO CHANGE FILE PATH IN FLASK APP
-        $url = 'http://localhost:5000/undang/tambahUU';
+        $url = 'http://localhost:8080/v1/preprocessing_uu';
         $prep = array(
             'id_tbl_uu' => $archive->id_tbl_uu,
             'file' => $archive->file_arsip
@@ -64,7 +64,7 @@ trait PrepareArchive
         $response = Http::withBody(json_encode($prep), "application/json")->post($url);
         $ekstrak = $response->json();
 
-        $textResponse = $ekstrak['values'][0]['text'];
+        $textResponse = $ekstrak['value'][0]['text'];
         // UPDATE TEXT FIELD IN ARCHIVE TABLE
         Archive::find($archive->id_tbl_uu)->update([
             'text' => $textResponse
@@ -160,7 +160,7 @@ trait PrepareArchive
     public function simpanPasalBulk($pasalToInsert)
     {
 
-        $url = 'http://localhost:5000/undang/tambahPasal_Bulk';
+        $url = 'http://localhost:8080/v1/preprocessing_bulk';
 
         $response = Http::withBody(json_encode([
             'data' => $pasalToInsert
