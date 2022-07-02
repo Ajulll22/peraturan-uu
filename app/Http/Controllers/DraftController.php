@@ -47,11 +47,11 @@ class DraftController extends Controller
 
     public function calcPasalSimilarity(Request $request)
     {
-        $wordvecPasal = Http::post('localhost:5000/wordvecPasal', [
+        $wordvecPasal = Http::post('localhost:8080/v1/draft/pasal', [
             'kalimat' => $request->theme,
         ]);
 
-        return $wordvecPasal['values'];
+        return $wordvecPasal['value'];
     }
 
     public function hitungCousine(Request $request)
@@ -202,6 +202,8 @@ class DraftController extends Controller
                     unset($data[$key]);
                 }
             }
+
+            // dd($data);
 
             // RETURN THE RESULT TO DATATABLE FORMAT
             $theme = $request->theme;
@@ -388,7 +390,7 @@ class DraftController extends Controller
         $section->addText('Hasil Drafting Undang-Undang')->setFontStyle($fontBold);
         foreach ($pasalResults as $item) {
             $section->addText('');
-            $section->addText($item->uu->uu .' '. $item->uu->tentang)->setFontStyle($fontBold);
+            $section->addText($item->uu->uu . ' ' . $item->uu->tentang)->setFontStyle($fontBold);
             $section->addText($item->uud_id);
             $section->addText(strip_tags($item->uud_content));
         }
