@@ -325,7 +325,7 @@ class DraftController extends Controller
         $query = explode(' ', $stemmingQuery);
 
         // GET ARCHIVE UU FILE PATH
-        $pdfPath = public_path('assets\pdf\\' . $data->file_arsip);
+        $pdfPath = public_path('assets/pdf/' . $data->file_arsip);
         if (file_exists($pdfPath)) {
             $pdfParser = new Parser();
             $pdf = $pdfParser->parseFile($pdfPath);
