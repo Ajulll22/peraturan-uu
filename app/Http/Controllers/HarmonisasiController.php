@@ -49,9 +49,9 @@ class HarmonisasiController extends Controller
             $fileName = 'Harmonisasi-' . time() . '.' . $file->extension();
         } else {
             // COPY TEMP FILE TO A NEW FOLDER
-            $oldFile = public_path() . '\assets\hitung\temp-harmonisasi.pdf';
+            $oldFile = public_path() . '/assets/hitung/temp-harmonisasi.pdf';
             $newFile = 'Harmonisasi-' . time() . '.pdf';
-            if (!copy($oldFile, public_path('\assets\pdf\\' . $newFile))) {
+            if (!copy($oldFile, public_path('/assets/pdf/' . $newFile))) {
                 return redirect(route('harmonisasi'))->with('failed', 'Copy file failed!');
             }
             $fileName = $newFile;
@@ -106,7 +106,7 @@ class HarmonisasiController extends Controller
         $pageTitle = 'Hasil Harmonisasi';
         $active = 'Harmonisasi';
 
-        if (!file_exists(public_path('assets\hitung\pembanding.pdf'))) {
+        if (!file_exists(public_path('assets/hitung/pembanding.pdf'))) {
             return redirect(route('harmonisasi.index'))->with('failed', 'Belum terdapat file pembanding');
         }
 
@@ -207,7 +207,7 @@ class HarmonisasiController extends Controller
 
         // use of pdf parser to read content from pdf 
         // $fileName = $file->getClientOriginalName();
-        $pdfPath = public_path() . '\assets\hitung\temp-harmonisasi.pdf';
+        $pdfPath = public_path() . '/assets/hitung/temp-harmonisasi.pdf';
         $pdfParser = new Parser();
         $pdf = $pdfParser->parseFile($pdfPath);
         // get the pdf text
