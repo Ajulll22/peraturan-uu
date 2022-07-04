@@ -174,9 +174,9 @@ class ArchiveController extends Controller
             $fileName = 'NewArsip-' . time() . '.' . $file->extension();
         } else {
             // COPY TEMP FILE TO A NEW FOLDER
-            $oldFile = public_path() . '\assets\hitung\temp-archive.pdf';
+            $oldFile = public_path() . '/assets/hitung/temp-archive.pdf';
             $newFile = 'NewArsip-' . time() . '.pdf';
-            if (!copy($oldFile, public_path('\assets\pdf\\' . $newFile))) {
+            if (!copy($oldFile, public_path('/assets/pdf/' . $newFile))) {
                 return redirect(route('archive.index'))->with('failed', 'Copy file failed!');
             }
             $fileName = $newFile;
@@ -279,7 +279,7 @@ class ArchiveController extends Controller
 
         // use of pdf parser to read content from pdf 
         // $fileName = $file->getClientOriginalName();
-        $pdfPath = public_path() . '\assets\hitung\temp-archive.pdf';
+        $pdfPath = public_path() . '/assets/hitung/temp-archive.pdf';
         $pdfParser = new Parser();
         $pdf = $pdfParser->parseFile($pdfPath);
         // get the pdf text
@@ -595,12 +595,12 @@ class ArchiveController extends Controller
             'uud_content' => $request->uud_content,
         ]);
 
-        $url = 'http://localhost:5000/undang/ubahPasal';
+        $url = 'http://localhost:8080/v1/preprocessing/pasal';
         $response = Http::withBody(json_encode([
             'id_uu_pasal' => $id,
             'uud_content' => $request->uud_content,
         ]), "application/json")
-            ->post($url);
+            ->put($url);
         $result = $response->json();
 
         return redirect(route('archive.show', $pasal->id_tbl_uu))->with('success', 'Pasal berhasil diupdate!');
