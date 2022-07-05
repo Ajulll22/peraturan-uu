@@ -90,7 +90,7 @@
         });
 
         function redirectToDetail(id) {
-            location = "{{ route('draft.index') }}" + `/${id}?theme=` + $('#theme').val()
+            window.open("{{ route('draft.index') }}" + `/${id}?theme=` + $('#theme').val())
         }
     </script>
 @endsection
