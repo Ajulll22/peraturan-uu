@@ -160,7 +160,7 @@ trait PrepareArchive
     public function simpanPasalBulk($pasalToInsert)
     {
 
-        $url = 'http://localhost:8080/v1/preprocessing_bulk';
+        $url = 'http://localhost:8080/v1/preprocessing/pasal';
 
         $response = Http::withBody(json_encode([
             'data' => $pasalToInsert
